@@ -1,0 +1,19 @@
+---
+- name: Search OpenVPN CCD files for instance {{ instance_item }}
+  ansible.builtin.find:
+    paths: "{{ hostvars[inventory_hostname].openvpn.install.path + instance_item }}/{{ hostvars[inventory_hostname].openvpn.ccd.path }}"
+    recurse: true
+  register: ccd_files
+  become: true
+
+# - name: Print files
+#   ansible.builtin.debug:
+#     msg: "{{ item.path }}"
+#   loop: "{{ ccd_files.files }}"
+
+- name: Fetch OpenVPN CCD files for instance {{ instance_item }}
+  ansible.builtin.fetch:
+    src: "{{ item.path }}"
+    dest: "{{ save.path }}"
+  loop: "{{ ccd_files.files }}"
+  become: true

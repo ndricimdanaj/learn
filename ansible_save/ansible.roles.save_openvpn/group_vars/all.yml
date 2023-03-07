@@ -1,0 +1,20 @@
+---
+# defaults file for save-openvpn
+# NOTE: always end paths with trailing slash
+netplan:
+  path: "/etc/netplan/"
+
+iptables:
+  path: "/etc/iptables/"
+  file: "rules.v4"
+
+openvpn:
+  install:
+    path: "/etc/openvpn/"
+  log:
+    path: "/var/log/openvpn/"
+  logrotate:
+    path: /etc/logrotate.d/
+    file: "openvpnlog"
+  ccd:
+    path: "ccd/"

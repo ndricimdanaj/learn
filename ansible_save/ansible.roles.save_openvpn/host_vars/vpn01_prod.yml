@@ -1,0 +1,3 @@
+---
+openvpn_instances:
+    - vpn01-mycity.swarco.com

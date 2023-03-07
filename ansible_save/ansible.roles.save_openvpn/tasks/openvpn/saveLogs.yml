@@ -1,0 +1,14 @@
+---
+- name: Search OpenVPN Logs for instance {{ instance_item }}
+  ansible.builtin.find:
+    paths: "{{ hostvars[inventory_hostname].openvpn.log.path }}"
+    recurse: true
+  register: openvpn_log_files
+  become: true
+
+- name: Fetch OpenVPN Logs for instance {{ instance_item }}
+  ansible.builtin.fetch:
+    src: "{{ item.path }}"
+    dest: "{{ save.path }}"
+  become: true
+  with_items: "{{ openvpn_log_files.files }}"

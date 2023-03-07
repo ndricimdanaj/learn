@@ -1,0 +1,17 @@
+---
+
+- name: Start
+  ansible.builtin.debug:
+    msg: Start saving on '{{ inventory_hostname }}'
+
+# - name: Save Netplan
+#   ansible.builtin.import_tasks: saveNetplan.yml
+
+# - name: Save IPTables
+#   ansible.builtin.import_tasks: saveIpTables.yml
+
+- name: OpenVPN files
+  ansible.builtin.include_tasks: openvpn/saveOpenvpn.yml
+  loop: "{{ hostvars[inventory_hostname].openvpn_instances }}"
+  loop_control:
+    loop_var: instance_item

@@ -1,0 +1,3 @@
+---
+openvpn_instances:
+    - vpn02-test-mycity.swarco.com

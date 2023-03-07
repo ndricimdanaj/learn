@@ -1,0 +1,8 @@
+/var/log/openvpn/*.log
+{
+        rotate 12
+        weekly
+        size 1G
+        compress
+        copytruncate
+}

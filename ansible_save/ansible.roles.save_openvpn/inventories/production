@@ -1,0 +1,27 @@
+---
+all:
+  hosts:
+  children:
+    prod:
+      vars:
+        env: prod
+      children:
+        vpn_prod:
+          hosts:
+            vpn01_prod:
+              ansible_ssh_host: 10.29.112.41
+            vpn02_prod:
+              ansible_ssh_host: 10.29.112.42
+            vpn03_prod:
+              ansible_ssh_host: 10.29.112.43
+            vpnentry_prod:
+              ansible_ssh_host: 10.29.112.40
+
+        vpn_legacy_prod:
+          hosts:
+            vpn05_legacy:
+              ansible_ssh_host: 10.29.113.193
+            vpn06_legacy:
+              ansible_ssh_host: 10.29.113.194
+            vpn07_legacy:
+              ansible_ssh_host: 10.29.113.195

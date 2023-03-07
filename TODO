@@ -1,0 +1,33 @@
+VPN Server Config
+
+Push TOpic routes on TOPIC VPN Server: push "route 172.17.0.0 255.255.0.0"
+change docker default network
+
+for VPN05Legacy - Topic Test Range
+sudo iptables -t nat -A PREROUTING -s 10.220.0.0/19 -d 172.17.0.10 -j DNAT --to-destination 10.29.112.38
+sudo iptables -t nat -A PREROUTING -s 10.220.0.0/19 -d 172.17.0.33 -j DNAT --to-destination 10.29.112.38
+
+for VPN06Legacy - Topic Test Range
+sudo iptables -t nat -A PREROUTING -s 10.220.32.0/19 -d 172.17.0.10 -j DNAT --to-destination 10.29.112.38
+sudo iptables -t nat -A PREROUTING -s 10.220.32.0/19 -d 172.17.0.33 -j DNAT --to-destination 10.29.112.38
+
+
+for VPN05Legacy - Topic Test Range
+sudo iptables -t nat -A PREROUTING -s 10.220.64.0/19 -d 172.17.0.10 -j DNAT --to-destination 10.29.112.38
+sudo iptables -t nat -A PREROUTING -s 10.220.64.0/19 -d 172.17.0.33 -j DNAT --to-destination 10.29.112.38
+
+
+
+
+for VPN05Legacy - Topic  Range
+sudo iptables -t nat -A PREROUTING -s 10.45.0.0/19 -d 172.17.0.10 -j DNAT --to-destination 10.29.112.38
+sudo iptables -t nat -A PREROUTING -s 10.45.0.0/19 -d 172.17.0.33 -j DNAT --to-destination 10.29.112.38
+
+for VPN06Legacy - Topic  Range
+sudo iptables -t nat -A PREROUTING -s 10.45.32.0/19 -d 172.17.0.10 -j DNAT --to-destination 10.29.112.38
+sudo iptables -t nat -A PREROUTING -s 10.220.32.0/19 -d 172.17.0.33 -j DNAT --to-destination 10.29.112.38
+
+
+for VPN05Legacy - Topic  Range
+sudo iptables -t nat -A PREROUTING -s 10.45.64.0/19 -d 172.17.0.10 -j DNAT --to-destination 10.29.112.38
+sudo iptables -t nat -A PREROUTING -s 10.45.64.0/19 -d 172.17.0.33 -j DNAT --to-destination 10.29.112.38

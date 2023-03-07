@@ -1,0 +1,13 @@
+---
+
+- name: Save IPTables
+  community.general.iptables_state:
+    state: saved
+    path: "{{ hostvars[inventory_hostname].iptables.path + hostvars[inventory_hostname].iptables.file }}"
+  become: true
+
+- name: Fetch IPTables
+  ansible.builtin.fetch:
+    src: "{{ hostvars[inventory_hostname].iptables.path + hostvars[inventory_hostname].iptables.file }}"
+    dest: "{{ save.path }}"
+  become: true

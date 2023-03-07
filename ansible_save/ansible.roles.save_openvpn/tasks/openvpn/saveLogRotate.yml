@@ -1,0 +1,6 @@
+---
+- name: Fetch LogRotate for OpenVPN
+  ansible.builtin.fetch:
+    src: "{{ hostvars[inventory_hostname].openvpn.logrotate.path + hostvars[inventory_hostname].openvpn.logrotate.file }}"
+    dest: "{{ save.path }}"
+  become: true

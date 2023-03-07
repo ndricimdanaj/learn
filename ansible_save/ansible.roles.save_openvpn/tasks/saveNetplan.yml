@@ -1,0 +1,15 @@
+---
+
+- name: Search Netplans
+  ansible.builtin.find:
+    paths: "{{ hostvars[inventory_hostname].netplan.path }}"
+    recurse: true
+  register: netplan_files
+  become: true
+
+- name: Fetch netplans
+  ansible.builtin.fetch:
+    src: "{{ item.path }}"
+    dest: "{{ save.path }}"
+  with_items: "{{ netplan_files.files }}"
+  become: true

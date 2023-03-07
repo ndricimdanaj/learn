@@ -1,0 +1,20 @@
+---
+all:
+  hosts:
+  children:
+    preprod:
+      vars:
+        env: preprod
+      children:
+        vpn_staging:
+          hosts:
+            vpn_entry_staging:
+              ansible_ssh_host: 10.29.112.161
+            vpn01_staging:
+              ansible_ssh_host: 10.29.112.162
+            vpn02_staging:
+              ansible_ssh_host: 10.29.112.163
+            vpn03_staging:
+              ansible_ssh_host: 10.29.112.164
+            dns_ntp_staging:
+              ansible_ssh_host: 10.29.112.168  

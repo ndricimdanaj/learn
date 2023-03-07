@@ -1,0 +1,19 @@
+---
+- name: Start to save OpenVPN Instance files
+  ansible.builtin.import_tasks: saveInstance.yml
+
+- name: Start to save OpenVPN CCD Folder files
+  ansible.builtin.import_tasks:
+    file: saveCcdFiles.yml
+  tags:
+    - ccd
+
+- name: Start to save OpenVPN Logs
+  ansible.builtin.include_tasks: saveLogs.yml
+  tags:
+    - logs
+
+- name: Start to save OpenVPN LogRotate
+  ansible.builtin.include_tasks: saveLogRotate.yml
+  tags:
+    - logrotate

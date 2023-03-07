@@ -1,0 +1,28 @@
+---
+- name: Search OpenVPN Instance files for instance {{ instance_item }}
+  ansible.builtin.find:
+    paths: "{{ hostvars[inventory_hostname].openvpn.install.path + instance_item }}"
+    excludes:
+      - '*.key'
+      - dh2048.pem
+    recurse: false # dont go into ccd folder
+  register: openvpn_files
+  become: true
+
+# - name: Print files
+#   ansible.builtin.debug:
+#     msg: "{{ item.path }}"
+#   loop: "{{ openvpn_files.files }}"
+
+- name: Fetch OpenVPN Instance files for instance {{ instance_item }}
+  ansible.builtin.fetch:
+    src: "{{ item.path }}"
+    dest: "{{ save.path }}"
+  loop: "{{ openvpn_files.files }}"
+  become: true
+
+- name: Fetch OpenVPN CFG for instance {{ instance_item }}
+  ansible.builtin.fetch:
+    src: "{{ hostvars[inventory_hostname].openvpn.install.path + instance_item }}.conf"
+    dest: "{{ save.path }}"
+  become: true

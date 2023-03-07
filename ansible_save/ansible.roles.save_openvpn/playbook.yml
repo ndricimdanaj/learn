@@ -1,0 +1,13 @@
+---
+- name: Save config files and settings from VPN Servers
+  # hosts: all
+  hosts: vpn01_staging,vpn02_staging
+  become_method: sudo
+  gather_facts: false
+
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+    - name: Import tasks
+      ansible.builtin.import_tasks: tasks/main.yml
